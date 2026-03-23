@@ -9,9 +9,9 @@ struct node {
 
 // Traverse
 void traverse(struct node* ptr) {
-    cout << "START -> ";
+    cout << "START ]->[ ";
     while(ptr != NULL) {
-        cout << ptr->data << " -> ";
+        cout << ptr->data << "]-->[ ";
         ptr = ptr->link;
     }
     cout << "NULL\n";
