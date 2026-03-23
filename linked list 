@@ -1,0 +1,59 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+struct node {
+    int data;
+    struct node* link;
+};
+
+// Traverse
+void traverse(struct node* ptr) {
+    cout << "START -> ";
+    while(ptr != NULL) {
+        cout << ptr->data << " -> ";
+        ptr = ptr->link;
+    }
+    cout << "NULL\n";
+}
+
+// Insert at beginning
+struct node* insert(struct node* start, int x) {
+    struct node* temp;
+    temp = (struct node*) malloc(sizeof(struct node));
+
+    temp->data = x;
+    temp->link = start;
+
+    start = temp;   // update head
+
+    return start;
+}
+
+int main() {
+    struct node n1, n2, n3;
+    struct node* start;
+
+    // Static creation
+    start = &n1;
+
+    n1.data = 10;
+    n1.link = &n2;
+
+    n2.data = 20;
+    n2.link = &n3;
+
+    n3.data = 30;
+    n3.link = NULL;
+
+    // Before insert
+    traverse(start);
+
+    // Insert new node
+    start = insert(start, 56);
+
+    // After insert
+    traverse(start);
+
+    return 0;
+}
